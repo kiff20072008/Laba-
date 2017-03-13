@@ -1,7 +1,7 @@
-#include "spisok.hpp"
 #include "circle.hpp"
 #include "Triangle.hpp"
 #include "rectangle.hpp"
+#include "spisok.hpp"
 #include <iostream>
 
 

@@ -7,21 +7,26 @@ void Rectangle::setScale(double coef)
 	{ 
 		width_ *= coef;
 		height_ *= coef;
+		updateRecAfterTurn();
 	} 
 }
 
-Rectangle::Rectangle() :width_(10), height_(10)
-{ 
-	pos_.x = pos_.y = 5;
+void Rectangle::updateRecAfterTurn()
+{
+	rect_.height = height_*cos(angle_) + width_*sin(angle_);
+	rect_.width = width_*cos(angle_) + height_*sin(angle_);
+}
+
+Rectangle::Rectangle():height_(10),width_(10)
+{
 	name_ = "Rectangle";
-	angle_ = 0;
-	rect_.pos = pos_;
-	rect_.height = height_;
+	rect_.height = height_ ;
 	rect_.width = width_;
 }
 
-Rectangle::Rectangle(point_t p, double x, double y) :Rectangle()
+Rectangle::Rectangle(point_t p , double x = 10, double y = 10)
 {
+	name_ = "Rectangle";
 	rect_.height = height_ = x;
 	rect_.width = width_ = y;
 	pos_.x = p.x;
@@ -43,6 +48,7 @@ Rectangle& Rectangle::operator=(const Rectangle& obj)
 	return *this;
 }
 
+
 Rectangle::Rectangle(const Rectangle& obj)
 {
 	angle_ = obj.angle_;
@@ -59,8 +65,5 @@ double Rectangle::getArea() const
 
 rectangle_t Rectangle::getFrameRect()
 {
-	rect_.pos = pos_;
-	rect_.height = height_*cos(angle_) + width_*sin(angle_);
-	rect_.width = width_*cos(angle_) + height_*sin(angle_);
 	return rect_;
 }

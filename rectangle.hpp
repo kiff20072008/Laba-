@@ -14,6 +14,7 @@ public:
 	void setScale(double coef);
 	double getArea() const;
 	rectangle_t getFrameRect();
+	void updateRecAfterTurn();
 private:
 	double width_, height_;
 };

@@ -2,12 +2,10 @@
 #define CIRCLE_HPP
 #include "shape.hpp"
 
-#define PI 3.1415926
-
 class Circle : public Shape
 {
 public:
-	Circle(); 
+	Circle();
 	Circle(point_t p, double raad) ;
 	Circle(const Circle& obj);
 	Circle& operator=(const Circle& obj);

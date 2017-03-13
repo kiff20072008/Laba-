@@ -1,21 +1,26 @@
 #include "circle.hpp"
 
+#define PI 3.1415926
+
 Circle::Circle() :r_(1)
 {
-	pos_.x = pos_.y = 1;
-	name_ = "Circle";
-	angle_ = 0;
-	rect_.height = rect_.width = 2;
-	rect_.pos = pos_;
+	name_= "Circle";
+	rect_.height = rect_.width = 2 * r_;
 }
 
-Circle::Circle(point_t p, double raad) :r_(raad)
+Circle::Circle(point_t p, double raad=1) 
 {
+	if (raad <= 0)
+	{
+		r_ = 1;
+	}else {
+		r_ = raad;
+	}
 	rect_.pos = pos_ = p;
 	name_ = "Circle";
-	angle_ = 0;
-	rect_.height = rect_.width = 2 * raad;
+	rect_.height = rect_.width = 2 * r_;
 }
+
 
 Circle::Circle(const Circle& obj)
 {
@@ -41,8 +46,6 @@ Circle& Circle::operator=(const Circle& obj)
 
 rectangle_t Circle::getFrameRect()
 {
-	rect_.pos = pos_;
-	rect_.height = rect_.width = 2 * r_;
 	return rect_;
 }
 
@@ -56,6 +59,8 @@ void Circle::setScale(double coef)
 	if (coef > 0 && coef < 1000)
 	{
 		r_ *= coef;
+		rect_.height = rect_.width = 2 * r_;
+
 	}
 }
 

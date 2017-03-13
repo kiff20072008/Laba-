@@ -3,8 +3,6 @@
 
 #include "shape.hpp"
 
-#define OTNOSH (sqrt(3)/2.)
-
 class Triangle : public Shape
 {
 public:
@@ -17,6 +15,7 @@ public:
 	void setScale(double coef);
 	double getArea()const;
 	rectangle_t getFrameRect();
+	void updateRecAfterTurn();
 private:
 	double side_;
 	double height_;
